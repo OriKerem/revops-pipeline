@@ -1,3 +1,4 @@
+USE SCHEMA revops.raw;
 CREATE OR REPLACE TABLE accounts AS
 SELECT
   C1                AS account,

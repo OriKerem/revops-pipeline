@@ -138,7 +138,10 @@ def build_fact(data, rates):
     log.info("Fact table: %s rows, %s measures", rows, cols)
     return df
 
-##Load
+##Load - Taking a DataFrame from memory and stores it as a table in Snowflake
+#write_pandas is the Snowflake function that uploads an entire DataFrame at once.
+# It doesn't insert row by row - behind the scenes it writes a temporary file and runs COPY INTO.
+# That's why 8,800 rows loaded in two seconds.
 
 def load_table(conn, df, table_name):
     """Write a DataFrame to the ANALYTICS schema, replacing any existing table."""
